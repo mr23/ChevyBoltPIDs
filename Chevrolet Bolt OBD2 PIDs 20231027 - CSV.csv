@@ -1,0 +1,420 @@
+Name,ShortName,ModeAndPID,Equation,Min Value,Max Value,Units,Header
+~Original List by Sean Graham obd@wackyland.net,List Credit,,,,,,
+~This work Copyright 2020 - free for non-commercial use only,Copyright,,,,,,
+~Published under Creative commons CC BY-NC-SA 2.5 CA,CC BY-NC-SA 2.5 CA,,,,,,
+,,,,,,,
+~This list contains modifications by Chris Meier themr23@gmail.com,[Updated List Credit],,,,,,
+~This work Copyright 2023 - free for non-commercial use only,Copyright,,,,,,
+~Published under Creative commons CC BY-NC-SA 2.5 CA,CC BY-NC-SA 2.5 CA,,,,,,
+,,,,,,,
+!Inst Kpower,Inst P (KW),,[222885]*[222414]/1000,-200,200,KW,
+!Inst W/kph,W/kph,,[222885]*[222414]/[22000D],-10000,10000,W/kph,
+!Inst W/mph,W/mph,,[222885]*[222414]/([22000D]/1.61),-10000,10000,W/mph,
+*Speed kmh,Speed,22000D,A,0,160,kmh,7E0
+*Speed mph,Speed,22000D,(A/1.61),0,100,mph,7E0
+*Odometer kM,Odo kM,2234B2,((A<24)+(B<16)+(C<8)+D)/64,0.0,200000,kM,0
+,,,,,,,
+!Battery - Pack - Capacity Ah Raw 2017-2018,Bat Cap Raw,2241A3,((A*256)+B)/10,100,250,Ah,7E4
+!Battery - Pack - Capacity Ah Raw 2019+,Bat Cap Raw,2245F9,((A*256)+B)/100,100,250,Ah,7E4
+!Battery - Pack - Capacity kWh estimated 2017-2018,Bat Cap Est,2241A3,((A*256)+B)*0.032,30,70,kWh,7E4
+!Battery - Pack - Capacity kWh estimated 2019+,Bat Cap Est,2245F9,((A*256)+B)*0.0032,30,70,kWh,7E4
+!Battery - Pack - State of Charge Displayed,Batt % DIC,228334,A*100/255,0,100,%,7E4
+!Battery - Pack - State of Charge Raw HD,SoC Raw HD,2243AF,((((A*256)+B)*100)/65535),0,105,%,7E4
+*Battery - Pack - State of Charge Raw LD,SoC Raw,015B,A/2.55,0,100,%,7E0
+*Battery - Pack - State of Charge Raw LD 2,SoC Raw 2,222411,A/2.55,0,255,%,7E1
+*Battery - Pack - State of Charge Raw LD 3,SoC Raw 3,22432F,A/2.55,0,100,%,7E4
+!Battery - Pack - State of Charge Variation,SoC Var,22435F,A/2.55,0,100,%,7E4
+!Battery - Pack - Current HD,Batt Amps HD,2240D4,((Signed(A)*256)+B)/20,-400,250,A,7E7
+*Battery - Number of Charges,# Charges,2243A5,((A<8)+B),0,1000,,7E4
+*Battery - Thermal Conditioning Inactive Time,Batt TC Inactive,2224AC,((A*256)+B)*2,0,999999,sec,7E4
+*Battery - 5V Reference Voltage 1,+5V REF 1,2240D3,5+((SIGNED(A)*256+B)*5/65535),0,6,V,7E7
+?Battery - Status Bitmap,BECM Status,224371,((A<8)+B),0,65535,?,7E4
+*Battery - Heater - Command W,Batt Heat Req,2241B5,(A*256)+B,0,2500,W,7E4
+!Battery - Heater - Measured W,Batt Heat,2241B6,(A*256)+B,0,2500,W,7E4
+*Battery - Heater - Command %,Batt Heat %,22439E,A/2.55,0,100,%,7E4
+*Battery - Coolant Pump Commanded %,Batt Pump Req,224359,(A/2.55),0,100,%,7E4
+!Battery - Coolant Pump Speed,Batt Pump Speed,22435A,(A*25),0,6500,RPM,7E4
+!Battery - Coolant Temp,Batt Coolant,2241A4,A-40,-40,100,C,7E4
+?Battery - Unknown 41A5,Batt Unk 41A5,2241A5,A,0,255,?,7E4
+*Battery - Module Temp - 1,Batt Mod 1,2240D7,A-40,-40,80,C,7E7
+*Battery - Module Temp - 2,Batt Mod 2,2240D9,A-40,-40,80,C,7E7
+*Battery - Module Temp - 3,Batt Mod 3,2240DB,A-40,-40,80,C,7E7
+*Battery - Module Temp - 4,Batt Mod 4,2240DD,A-40,-40,80,C,7E7
+*Battery - Module Temp - 5,Batt Mod 5,2240DF,A-40,-40,80,C,7E7
+*Battery - Module Temp - 6,Batt Mod 6,2240E1,A-40,-40,80,C,7E7
+*Battery - Module Temp - Max Temp,Max Batt,224349,A-40,-40,80,C,7E4
+*Battery - Module Temp - Min Temp,Min Batt,22434A,A-40,-40,80,C,7E4
+!Battery - Module Temp - Avg Temp,Batt Temp Avg,22434F,A-40,-40,80,C,7E4
+-Battery - Module Temp - Max - Alt,Batt Max 2,222416,A-40,-40,80,C,7E1
+-Battery - Module Temp - Min - Alt,Batt Min 2,222417,A-40,-40,80,C,7E1
+*Battery - Module Temp - Max Module,Batt Mod Max #,22434B,A,1,6,Mod,7E4
+*Battery - Module Temp - Min Module,Batt Mod Min #,22434C,A,1,6,Mod,7E4
+!Battery - Coolant Temp F,Batt Coolant,2241A4,((A-40)*9/5)+32,-40,180,F,7E4
+*Battery - Module Temp - 1 F,Batt Mod 1,2240D7,((A-40)*9/5)+32,-40,150,F,7E7
+*Battery - Module Temp - 2 F,Batt Mod 2,2240D9,((A-40)*9/5)+32,-40,150,F,7E7
+*Battery - Module Temp - 3 F,Batt Mod 3,2240DB,((A-40)*9/5)+32,-40,150,F,7E7
+*Battery - Module Temp - 4 F,Batt Mod 4,2240DD,((A-40)*9/5)+32,-40,150,F,7E7
+*Battery - Module Temp - 5 F,Batt Mod 5,2240DF,((A-40)*9/5)+32,-40,150,F,7E7
+*Battery - Module Temp - 6 F,Batt Mod 6,2240E1,((A-40)*9/5)+32,-40,150,F,7E7
+*Battery - Module Temp - Max Temp F,Max Batt,224349,((A-40)*9/5)+32,-40,150,F,7E4
+*Battery - Module Temp - Min Temp F,Min Batt,22434A,((A-40)*9/5)+32,-40,150,F,7E4
+!Battery - Module Temp - Avg Temp F,Batt Avg,22434F,((A-40)*9/5)+32,-40,150,F,7E4
+-Battery - Module Temp - Max - Alt F,Batt Max 2,222416,((A-40)*9/5)+32,-40,150,F,7E1
+-Battery - Module Temp - Min - Alt F,Batt Min 2,222417,((A-40)*9/5)+32,-40,150,F,7E1
+*Battery - Cell - Minimum Voltage,Min Cell V,224329,((A*256)+B)/1666.666,2.5,4.5,V,7E4
+*Battery - Cell - Minimum #,Min Cell #,22432A,A,1,96,Cell,7E4
+*Battery - Cell - Maximum Voltage,Max Cell V,22432B,((A*256)+B)/1666.666,2.5,4.5,V,7E4
+*Battery - Cell - Maximum #,Max Cell #,22432C,A,1,96,Cell,7E4
+!Battery - Cell - Average Voltage,Avg Cell,22C218,((A*256)+B)*5/65535,2.5,4.5,V,7E7
+*Battery - Cell - Average Voltage 2,Avg Cell 2,2244B9,((A*256)+B)/8000,2.5,4.5,V,7E7
+!Battery - Pack - Resistance,Batt Res,2240E9,((A*256)+B)/2,0,2,mOhm,7E4
+*Battery - Pack - Minimum Voltage,Min Batt V,22433B,((A*256)+B)*0.52,250,410,V,7E4
+*Battery - Pack - Maximum Voltage,Max Batt V,22433C,((A*256)+B)*0.52,250,410,V,7E4
+*Battery - Pack - Coolant Level Switch,Batt Cool Lvl,22442C,5*(A/255),0,5,V,7E4
+?Battery - Pack - Coolant Pump Feedback,Batt Pump Fbk,2241BD,A/2.55,0,100,%,7E4
+-Battery - Pack - Voltage LD,Batt Volts,22432D,((A*256)+B)*0.52,250,410,V,7E4
+-Battery - Pack - Terminal Voltage LD,Batt Term V,2282A3,A*2,250,410,V,7E7
+-Battery - Pack - Minimum State of Charge Limit,Min SoC Limit,22433F,A/2.55,0,100,%,7E4
+,,,,,,,
+*Charger - AC Current,CAC Amps,224369,A*.2,0,40,A,7E4
+*Charger - AC Voltage,CAC Volts,224368,A*2,0,500,V,7E4
+*Charger - AC Current Requested,CAC Amps Req,224533,A*0.3,0,160,A,7E4
+!Charger - HV Current,CDC Amps,22436C,((Signed(A)*256+B))/20,0,200,A,7E4
+*Charger - HV Voltage,CDC Volts,22436B,((A*256)+B)/2,0,500,V,7E4
+-Charger - DC Port Positive Isolation,DCC+ve Iso,224423,A*2,0,250,V,7E4
+-Charger - DC Port Negative Isolation,DCC-ve Iso,224423,B*2,0,250,V,7E4
+!Charger - DC Port Current,DCC Curent,224424,((A*256)+B-32768)/128,0,150,A,7E4
+*Charger - DC Port KW,DCC KW,,[22436B]*[224424]/1000,0,56,kW,7E4
+*Charger - DC Port Temperature,DCC Port Temp,224425,(A-40),-40,80,C,7E4
+*Charger - DC Port Temperature F,DCC Port Temp,224425,((A-40)*9/5)+32,-40,150,F,7E4
+!Charger - DC Port Current Requested,DCC Curr Req,224445,((A*256)+B-32768)/128,0,150,A,7E4
+!Charger - DC Port kW Requested,DCC kW Req,,[224445]*[224424]/1000,0,56,kW,7E4
+-Charger - Port Lock Actuator Position Signal,DCC Lock Sig,22445D,(5*((A*256)+B))/65535,0,5,V,7E4
+*Charger - Port Door Status,Chrg Port Door,224372,B,0,1,Open,7E4
+!Charger - Last Charge AC Wh 2017-2018,Last Chrg Wh,22437D,((A*256)+B)*10,0,655350,Wh,7E4
+!Charger - Last Charge HV Energy Output,Chrg HV Last,22437F,((A*256)+B)*10,0,655350,Wh,7E4
+*Charger - Charging Level,Charge Level,224531,A,0,3,Level,7E4
+?Charger - System Active,? Chrg Active,2243AE,A,0,10,?,7E4
+-Charger - Proximity Detection Circuit Voltage,Prox Det Circ,2243BB,(5*A)/255,0,6,V,7E4
+*Charger - AC Input Status Duty Cycle,Chrg AC ISDC,22452D,A/2.55,0,100,%,7E4
+*Charger - DC Output Status Duty Cycle,Chrg DC OSDC,22452E,A/2.55,0,100,%,7E4
+*Charger - AC Control Pilot Voltage,AC Ctrl Pilot V,224545,A*0.05,0,10,V,7E4
+*Charger - AC Control Pilot %,AC Ctrl Pilot %,224546,(A/2.55),0,100,%,7E4
+*Charger - System Inactive Time,Chrg Inactive,2224AB,((A*256)+B)*2,0,131072,sec,7E4
+?Charger - High Output Active,? Output,224373,((A*256)+B)/32768,0,1,Active,7E4
+*Charger - Total Power Output Available,Chrg Tot Pwr,2241AF,(A*256)+B,0,65535,W,7E4
+*Charger - Power Output Available,DCC PowerOut,224375,((A*256)+B),0,65535,W,7E4
+*Charger - Battery Charger Power Input Available,DCC PowerIn,224376,((A*256)+B),0,65535,W,7E4
+*Charger - System Efficiency (Alt Calc),Chrg Effic Alt%,,[22436B]*[22436C]*100/[224376],0,100,%,7E4
+-Charger - System Efficiency (Active Test Status),Batt Chrg Eff Testing,224564,A,0,5,Act,7E4
+-Charger - System Efficiency (Active Test),Batt Chrg Eff Act,224565,A/1.28,0,100,%,7E4
+*Charger - System Efficiency (Passive Test),Chrg Effic %,224566,(A*2)/2.55,0,100,%,7E4
+-Charger - System HV Interlock Circuit Status,HVI Circ Stat,224559,A,0,5,Stat,7E4
+-Charger - System HV Interlock Circuit,HVI Circ,224558,A,0,5,Act,7E4
+?Charger - Unknown Status,? Chrg Unk,224547,(A*256)+B,0,65535,?,7E4
+?Charger - Charging Limit,? Chg Limit,2241B7,(Signed(A)*256+b),0,32000,W,7E4
+,,,,,,,
+-HV Actively Tested Vehicle Isolation Resistance,Vehicle Isolation,2241EC,((A*256)+B),0,65535,Ohms,7E4
+-HV Isolation Test Resistance,Iso Test Res,2243A6,A*25,0,6375,kOhm,7E4
+-HV Inverter Voltage LD,HV Inv Volts,2241DA,((A*256)+B)*0.52,250,410,V,7E4
+?HV System Being Serviced Lockout,HV Locked Out,2244F8,A,0,5,Lock,7E4
+?HV Crash Event Lockout,Crash Event,224522,A,0,5,Lock,7E4
+-HV System Interlock Circuit,HVSI Circ,224310,A,0,5,Act,7E4
+-HV System Interlock Circuit Status,HVSI Circ Stat,224311,A,0,5,Stat,7E4
+!HV Current HD,HV Amps,222414,(Signed(A)*256+B)/20,-200,500,A,7E1
+!HV Current,HV Amps 2,224356,(Signed(A)*256+B)/(-6.675),-200,500,A,7E4
+!HV Inverter Voltage HD,HV Inv HD V,2241C4,((A*256)+B)/40,0,420,V,7E4
+!HV Circuit (HPCM),HPCM HV,221C24,((A*256)+B)/100,0,500,V,7E1
+!HV MG Voltage,MG V,222885,((A*256)+B)/100,0,500,V,7E1
+,,,,,,,
+!Air Temp - Ambient,Amb Air,220046,(A-40),-40,100,C,7E0
+*Air Temp - Ambient 2,Amb Air 2,22232C,(A-40),-40,100,C,7E0
+*Air Temp - Unfiltered,Air Temp Unfilt,22801E,(A/2)-40,-40,100,C,7E4
+*Air Temp - Filtered,Air Temp,22801F,(A/2)-40,-40,100,C,7E4
+!Air Temp - Ambient F,Amb Air,220046,((A-40)*9/5)+32,-40,150,F,7E0
+*Air Temp - Ambient 2 F,Amb Air 2,22232C,((A-40)*9/5)+32,-40,150,F,7E0
+*Air Temp - Unfiltered F,Air Temp Unfilt,22801E,(((A/2)-40)*9/5)+32,-40,150,F,7E4
+*Air Temp - Filtered F,Air Temp,22801F,(((A/2)-40)*9/5)+32,-40,150,F,7E4
+*Cabin - AC - Command W,Cabin AC Req,2241B1,((A*256)+B),0,6500,W,7E4
+!Cabin - AC - Measured W,Cabin AC,2241B2,((A*256)+B),0,6500,W,7E4
+*Cabin - AC - High Side Sensor Pressure,AC High Press,221564,A,0,255,kPa,7E0
+*Cabin - AC - High Side Sensor Voltage,AC High V,221144,A*0.02,0,5,V,7E0
+*Cabin - AC - Low Side Sensor Pressure,AC Low Pres,2282B2,A*2.7294,0,700,kPa,7E4
+*Cabin - AC - Low Side Sensor Voltage,AC Low Volts,2282B3,A*0.02,0,5,V,7E4
+*Cabin - AC - Compressor Command,AC On,22451F,A-1,0,1,On,7E4
+*Cabin - AC - Compressor Speed Commanded,AC RPM Req,2282B4,((A*256)+B),0,6500,RPM,7E4
+*Cabin - AC - Compressor Speed,AC RPM,2282B5,((A*256)+B),0,6500,RPM,7E4
+-Cabin - AC - Compressor Power Consumption,AC Power Con,2282B7,((A*256)+B),0,5000,W,7E4
+*Cabin - Blower Motor Speed Request,Cabin Blower,22451E,(A/2.55),0,100,%,7E4
+*Cabin - Climate Control Target Temp Broken,Climate Broken,224520,(A/2)-40,0,10,Broken,7E4
+*Cabin - Heater - Command W,Cabin Heat Req,2241B3,(Signed(A)*256+B),0,7500,W,7E4
+!Cabin - Heater - Measured W,Cabin Heat,2241B4,(Signed(A)*256+B),0,7500,W,7E4
+?Cabin - Heater - Coolant Control Solenoid Valve Feedback,CabinHeatCoolFeedback,22835A,A/2.55,0,100,%,7E4
+-Cabin - Heater - Coolant Control Solenoid Valve Command,Heater Cool Soln Cmd,2243B0,A/2.55,0,100,%,7E4
+?Unknown HVAC 83EA,HVAC Unk,2283EA,A,0,5,Learned,7E4
+,,,,,,,
+*Electronics Coolant Temp,Elec Temp,221C43,A-40,-20,100,C,7E4
+*Electronics Coolant Temp F,Elec Temp,221C43,((A-40)*9/5)+32,-40,150,F,7E4
+*Electronics Coolant Pump Speed,Elec Pump Speed,224358,(A*25),0,6500,RPM,7E4
+*Electronics Coolant Pump Commanded %,Elec Pump Req,224357,(A/2.55),0,100,%,7E4
+?Electronics Coolant Pump Feedback,Elec Pump Feedback,2241C3,A/2.55,0,100,%,7E4
+*Cooling Fan (Radiator) Motor Commanded %,Radiator Speed,2213AF,(A/2.55),0,100,%,7E4
+,,,,,,,
+*Motor Inverter Active,Inv Active,222881,A,0,1,Active,7E1
+!Motor Inverter Temperature Sensor 1,InvTemp1,221C26,A-40,-40,120,C,7E1
+*Motor Inverter Temperature Sensor 2,InvTemp2,221C28,A-40,-40,120,C,7E1
+*Motor Inverter Temperature Sensor 3,InvTemp3,221C2A,A-40,-40,120,C,7E1
+*Motor Temperature,Motor Temp,2228CB,A-40,-40,120,C,7E1
+!Motor Inverter Temperature Sensor 1 F,InvTemp1,221C26,((A-40)*9/5)+32,-40,150,F,7E1
+*Motor Inverter Temperature Sensor 2 F,InvTemp2,221C28,((A-40)*9/5)+32,-40,150,F,7E1
+*Motor Inverter Temperature Sensor 3 F,InvTemp3,221C2A,((A-40)*9/5)+32,-40,150,F,7E1
+*Motor Temperature F,Motor Temp,2228CB,((A-40)*9/5)+32,-40,150,F,7E1
+?Motor Speed,? Motor RPM,2228AF,((A*256)+B),0,8900,RPM,7E1
+?Motor Torque,? Motor Torque,2228AB,((A*256)+B),-10000,10000,N.m,7E1
+*Axle Torque - Driver Requested,Axle Torque Req,222434,((A*256)+B)-22534,0,10000,N.m,7E1
+*Transmission - Torque Requested,Trans Torque Req,22288A,((A*256)+B)-22534,0,10000,N.m,7E1
+?Axle Torque - Immediate,? Axle Torq Imm,222428,((A*256)+B)-22534,0,10000,N.m,7E1
+?Axle Torque - Measured,? Axle Torq Meas,222429,((A*256)+B)-22534,0,10000,N.m,7E1
+?Axle Torque - Command,? Axle Torq Req,22242D,((A*256)+B)-22534,0,10000,N.m,7E1
+!Transmission - Fluid Pump % (Aux),Trans Pump,222C05,(A/2.55),0,100,%,7E1
+!Transmission - Fluid Temperature,Trans Temp,221940,A-40,-40,120,C,7E1
+*Transmission - Fluid Temperature F,Trans Temp,221940,((A-40)*9/5)+32,-40,150,F,7E1
+*Throttle Position - Calculated,Accel Pos,222810,(A/2.55),0,100,%,7E1
+?Line Pressure - Calculated,? Line Press,222822,((A*256)+B),0,10000,kPa,7E1
+?Transmission - Output Shaft Direction,OSS Dir,22284A,A,0,255,Dir,7E1
+?Transmission - ISS/OSS Supply Voltage,? ISSOSS,222861,A,0,255,Ok,7E1
+?Transmission - Output Shaft Speed Req,? Trans OSS Req,222862,((A*256)+B)/4,0,9000,RPM,7E1
+?Transmission - Output Shaft Speed Sensor,? Trans OSS RPM,222888,((A*256)+B)/4,0,9000,RPM,7E1
+*Ignition Power Mode - BECM,BECM Power Mode,228002,A,0,4,Run,7E7
+*Ignition Power Mode,Power Mode,22207E,A,0,4,Run,7E1
+*Ignition Input On/Off/Start,Ignition Mode,2220D0,A,0,255,Ign,7E1
+*Cruise Control Status,Cruise Ctrl,222067,A,0,255,?,7E0
+*Regen Braking Status,Regen Status,2224B0,A>7,0,1,On,7E1
+-Regen Braking Axle Torque Request,Reg Torq Req,222426,A,0,255,?,7E1
+-Regen Braking Axle Torque Predicted,Reg Torq Pred,22242B,A,0,255,?,7E1
+!Brake Motor Driver Temp 1,BMD Temp 1,224509,SIGNED(A),-40,120,C,7E6
+*Brake Motor Driver Temp 2,BMD Temp 2,22450A,SIGNED(A),-40,120,C,7E6
+!Brake Motor Driver Temp 1 F,BMD Temp 1,224509,(SIGNED(A)*9/5)+32,-40,150,F,7E6
+*Brake Motor Driver Temp 2 F,BMD Temp 2,22450A,(SIGNED(A)*9/5)+32,-40,150,F,7E6
+*Brake Pedal Position 1,BrakePedalPos1,224501,((SIGNED(A)*256)+B)/100,-15,15,mm,7E6
+*Brake Pedal Position 2,BrakePedalPos2,224502,((SIGNED(A)*256)+B)/100,-15,15,mm,7E6
+!Brake Torque,Brake Tq,22242C,((A*256)+B)/2,0,65535,N-m,7E1
+-Hood Position,Hood Pos,22905C,A,0,1,Open,7E4
+-Hood Switch,Hood Switch,22247A,5*(A/255),0,5,V,7E4
+*Transmission - Gear Position,PRNDL,222889,A,0,8,Gear,7E1
+!Transmission - RPM,RPM,221942,((A*256)+B)/8,0,8810,RPM,7E1
+,,,,,,,
+*14V APM Enable Command,14V APM En,221C39,A/128,0,1,On,7E0
+*14V Power Available,14V Power,2241B0,((A*256)+B)/16,0,1600,W,7E4
+*14V Power Module Setpoint %,14V Set %,221C38,(A/2.55),0,100,%,7E0
+*14V Power Module Setpoint Voltage,14V Set V,221C47,A/10,0,16,V,7E0
+?14V Charge Indicator,14V Chrg,22206B,A,0,255,?,7E0
+*Control Module Voltage,Ctrl Mod V,220042,((A*256)+B)/1000,0,16,V,7E0
+*Ignition Voltage,Ignition Volts,221141,A/10,0,16,V,7E1
+?12V Battery Maintenance Mode,12V Batt Maint,2243C4,((A*256)+B),0,65535,?,7E4
+,,,,,,,
+-Active Grille Shutter Position Command,Grille Set,222364,(A/2.55),0,100,%,7E0
+-Active Grille Shutter Position,Grille Pos,222366,(A/2.55),0,100,%,7E0
+-Active Grille Cold Temperature Mode,Grille Cold,22239B,A,0,255,?,7E0
+,,,,,,,
+-MIL - Cause,? MIL Cause,22135F,A,0,255,?,7E0
+-MIL - Status,? MIL Status,222020,A,0,255,?,7E0
+-MIL - Distance On,MIL Distance,220021,((A*256)+B),0,65535,km,7E4
+-MIL - Warm-Ups Since DTC Cleared,WarmUps Since MIL,220030,A,0,255,Counts,7E4
+-MIL - Distance Since DTC Cleared,Dist Since MIL,220031,((A*256)+B),0,65535,km,7E4
+,,,,,,,
++Cell Voltage #01,Cell 01,224181,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #02,Cell 02,224182,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #03,Cell 03,224183,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #04,Cell 04,224184,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #05,Cell 05,224185,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #06,Cell 06,224186,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #07,Cell 07,224187,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #08,Cell 08,224188,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #09,Cell 09,224189,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #10,Cell 10,22418A,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #11,Cell 11,22418B,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #12,Cell 12,22418C,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #13,Cell 13,22418D,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #14,Cell 14,22418E,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #15,Cell 15,22418F,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #16,Cell 16,224190,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #17,Cell 17,224191,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #18,Cell 18,224192,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #19,Cell 19,224193,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #20,Cell 20,224194,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #21,Cell 21,224195,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #22,Cell 22,224196,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #23,Cell 23,224197,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #24,Cell 24,224198,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #25,Cell 25,224199,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #26,Cell 26,22419A,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #27,Cell 27,22419B,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #28,Cell 28,22419C,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #29,Cell 29,22419D,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #30,Cell 30,22419E,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #31,Cell 31,22419F,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #32,Cell 32,224200,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #33,Cell 33,224201,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #34,Cell 34,224202,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #35,Cell 35,224203,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #36,Cell 36,224204,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #37,Cell 37,224205,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #38,Cell 38,224206,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #39,Cell 39,224207,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #40,Cell 40,224208,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #41,Cell 41,224209,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #42,Cell 42,22420A,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #43,Cell 43,22420B,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #44,Cell 44,22420C,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #45,Cell 45,22420D,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #46,Cell 46,22420E,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #47,Cell 47,22420F,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #48,Cell 48,224210,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #49,Cell 49,224211,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #50,Cell 50,224212,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #51,Cell 51,224213,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #52,Cell 52,224214,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #53,Cell 53,224215,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #54,Cell 54,224216,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #55,Cell 55,224217,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #56,Cell 56,224218,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #57,Cell 57,224219,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #58,Cell 58,22421A,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #59,Cell 59,22421B,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #60,Cell 60,22421C,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #61,Cell 61,22421D,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #62,Cell 62,22421E,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #63,Cell 63,22421F,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #64,Cell 64,224220,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #65,Cell 65,224221,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #66,Cell 66,224222,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #67,Cell 67,224223,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #68,Cell 68,224224,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #69,Cell 69,224225,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #70,Cell 70,224226,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #71,Cell 71,224227,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #72,Cell 72,224228,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #73,Cell 73,224229,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #74,Cell 74,22422A,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #75,Cell 75,22422B,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #76,Cell 76,22422C,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #77,Cell 77,22422D,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #78,Cell 78,22422E,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #79,Cell 79,22422F,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #80,Cell 80,224230,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #81,Cell 81,224231,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #82,Cell 82,224232,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #83,Cell 83,224233,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #84,Cell 84,224234,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #85,Cell 85,224235,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #86,Cell 86,224236,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #87,Cell 87,224237,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #88,Cell 88,224238,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #89,Cell 89,224239,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #90,Cell 90,22423A,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #91,Cell 91,22423B,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #92,Cell 92,22423C,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #93,Cell 93,22423D,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #94,Cell 94,22423E,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #95,Cell 95,22423F,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++Cell Voltage #96,Cell 96,224240,((((A*256)+B)*5)-([22C218]*65535))/65.535,-8,8,V,7E7
++rCell Voltage #96,Cell 96,224240,((A*256)+B)*5/65535,2.5,4.5,V,7E7
+,,,,,,,
+-Contactor Commands,Contactors,22430E,A,0,255,Bit,7E4
+-Motor Phase U Current,Motor U Current,2228DE,((SIGNED(A)*256)+B)*0.04,-150,200,A,7E1
+-Motor Phase V Current,Motor V Current,2228E1,((SIGNED(A)*256)+B)*0.04,-150,200,A,7E1
+-Motor Phase W Current,Motor W Current,2228E4,((SIGNED(A)*256)+B)*0.04,-150,200,A,7E1
+-Contactor Open Reason History 1,ContactOpenHist1,22248C,A,0,255,Hist,7E1
+-Contactor Open Reason History 2,ContactOpenHist2,22248D,A,0,255,Hist,7E1
+-Contactor Open Reason History 3,ContactOpenHist3,22248E,A,0,255,Hist,7E1
+-Contactor Open Reason History 4,ContactOpenHist4,22248F,A,0,255,Hist,7E1
+-Contactor Open Reason History 5,ContactOpenHist5,222490,A,0,255,Hist,7E1
+-Contactor Open Reason History 6,ContactOpenHist6,222491,A,0,255,Hist,7E1
+-Contactor Open Reason History 7,ContactOpenHist7,222492,A,0,255,Hist,7E1
+-Contactor Open Reason History 8,ContactOpenHist8,222493,A,0,255,Hist,7E1
+-One Pedal Disengage History 1,OnePedalHist1,2236EE,A,0,255,Hist,7E1
+-One Pedal Disengage History 2,OnePedalHist2,2236EF,A,0,255,Hist,7E1
+-One Pedal Disengage History 3,OnePedalHist3,2236F0,A,0,255,Hist,7E1
+-One Pedal Disengage History 4,OnePedalHist4,2236F1,A,0,255,Hist,7E1
+-One Pedal Disengage History 5,OnePedalHist5,2236F2,A,0,255,Hist,7E1
+-One Pedal Disengage History 6,OnePedalHist6,2236F3,A,0,255,Hist,7E1
+-One Pedal Disengage History 7,OnePedalHist7,2236F4,A,0,255,Hist,7E1
+-One Pedal Disengage History 8,OnePedalHist8,2236F5,A,0,255,Hist,7E1
+-One Pedal Driving Inhibit History 1,OnePedalInhibit1,2236F6,A,0,255,Hist,7E1
+-One Pedal Driving Inhibit History 2,OnePedalInhibit2,2236F7,A,0,255,Hist,7E1
+-One Pedal Driving Inhibit History 3,OnePedalInhibit3,2236F8,A,0,255,Hist,7E1
+-One Pedal Driving Inhibit History 4,OnePedalInhibit4,2236F9,A,0,255,Hist,7E1
+-One Pedal Driving Inhibit History 5,OnePedalInhibit5,2236FA,A,0,255,Hist,7E1
+-One Pedal Driving Inhibit History 6,OnePedalInhibit6,2236FB,A,0,255,Hist,7E1
+-One Pedal Driving Inhibit History 7,OnePedalInhibit7,2236FC,A,0,255,Hist,7E1
+-One Pedal Driving Inhibit History 8,OnePedalInhibit8,2236FD,A,0,255,Hist,7E1
+-Shifter Position Indicator,Shifter Pos,221B1A,A-146,0,8,Pos,7E3
+-Shifter X Position Sensor 1 Duty Cycle,Shifter Xpos 1,221B1B,A,0,255,?,7E3
+-Shifter Y Position Sensor 1 Duty Cycle,Shifter Ypos 1,221B1C,A,0,255,?,7E3
+-Shifter X Position Sensor 2 Duty Cycle,Shifter Xpos 2,221B1D,A,0,255,?,7E3
+-Shifter Y Position Sensor 2 Duty Cycle,Shifter Ypos 2,221B1E,A,0,255,?,7E3
+-Shifter X Position Sensor 1 Frequency,Shifter Xfreq 1,221B1F,A,0,255,?,7E3
+-Shifter Y Position Sensor 1 Frequency,Shifter Yfreq 1,221B20,A,0,255,?,7E3
+-Shifter X Position Sensor 2 Frequency,Shifter Xfreq 2,221B21,A,0,255,?,7E3
+-Shifter Y Position Sensor 2 Frequency,Shifter Yfreq 2,221B22,A,0,255,?,7E3
+-Transmission Park Position Switch 1,ParkSw 1,221B23,A,0,255,?,7E3
+-Transmission Park Position Switch 2,ParkSw 2,221B24,A,0,255,?,7E3
+-Transmission Shift Interlock Switch 1,ShiftSw 1,221B25,A,0,255,?,7E3
+-Transmission Shift Interlock Switch 2,ShiftSw 2,221B26,A,0,255,?,7E3
+-Internal Mode Switch 1,IntMode1,2233C3,A,0,255,?,7E1
+-Internal Mode Switch 2,IntMode2,2233C4,A,0,255,?,7E1
+-Internal Mode Switch 3,IntMode3,2233C5,A,0,255,?,7E1
+-Internal Mode Switch 4,IntMode4,2233C6,A,0,255,?,7E1
+-Internal Mode Switch 5,IntMode5,2233C7,A,0,255,?,7E1
+-Internal Mode Switch 6,IntMode6,2233C8,A,0,255,?,7E1
+-Internal Mode Switch 7,IntMode7,2233C9,A,0,255,?,7E1
+-Internal Mode Switch 8,IntMode8,2233CA,A,0,255,?,7E1
+-Internal Mode Switch 9,IntMode9,2233CB,A,0,255,?,7E1
+-Internal Mode Switch 10,IntMode10,2233CC,A,0,255,?,7E1
+-Internal Mode Switch 11,IntMode11,2233CD,A,0,255,?,7E1
+-Motor Position Sensor Offset Learn Status,Motor Sens Lrn,2228CD,A,0,1,Learned,7E1
+-Motor Controller Isolation Voltage +ve,MotorC+Iso,2228CF,((A*256)+B)/100,0,250,V,7E1
+-Motor Controller Isolation Voltage -ve,MotorC-Iso,2228D0,((A*256)+B)/100,0,250,V,7E1
+-Motor Control Module Positive Supply Isolation Voltage,MotorCM+Iso,224419,((A*256)+B)*0.13,0,250,V,7E4
+-Motor Control Module Negative Supply Isolation Voltage,MotorCM-Iso,22441A,((A*256)+B)*0.13,0,250,V,7E4
+-Brake Pedal Position Circuit Signal,Brake Pos,221124,A,0,8,Pos,7E1
+-Clock,Clock,224416,B+(C/100),0,24,Clock,7E4
+-Clock DoW,Clock DoW,224416,A,1,7,DoW,7E4
+,,,,,,,
+?Unknown 2472,Unk 2472,222472,((A<8)+B),0,65535,?,7E0
+?Unknown 2475,Unk 2475,222475,((A<8)+B),0,65535,?,7E0
+?Unknown 2476,Unk 2476,222476,A,0,255,?,7E0
+?Unknown 2477,Unk 2477,222477,A,0,255,?,7E0
+?Unknown 2478,Unk 2478,222478,A,0,255,?,7E0
+?Unknown 2479,Unk 2479,222479,A,0,255,?,7E0
+?MG Current ?,?MG A1,2224DF,((Signed(A)*256)+B)/20,-400,400,A,7E1
+?MG Current Bad?,?MG Amps,222883,((Signed(A)*256)+B)/20,-400,400,A,7E1
+?Unknown HPCM2-Data-Status,HPCM2UnkStat,22441E,((A<24)+(B<16)+(C<8)+D),0,0,?,7E4
+,,,,,,,
+?Unknown 28F1,Unk 28F1,2228F1,(Signed(A)*256+B),-32768,32767,?,7E1
+?Unknown 28F2,Unk 28F2,2228F2,(Signed(A)*256+B),-32768,32767,?,7E1
+?Unknown 28F4,Unk 28F4,2228F4,(Signed(A)*256+B),-32768,32767,?,7E1
+?Unknown 28F8,Unk 28F8,2228F8,(Signed(A)*256+B),-32768,32767,?,7E1
+?Unknown 28F9,Unk 28F9,2228F9,(Signed(A)*256+B),-32768,32767,?,7E1
+?Unknown 28FB,Unk V 28FB,2228FB,((A*256)+B)/100,0,500,V,7E1
+?Unknown 28FE,Unk 28FE,2228FE,((A*256)+B),0,65535,?,7E1
+,,,,,,,
+?Unknown BECM 42AF,Unk B 42AF,2242AF,A,0,255,?,7E7
+?Unknown BECM Cell V 4331,Unk V 4331,224331,((A*256)+B)/400,0,5,V,7E4
+?Unknown BECM Cell V 4332,Unk V 4332,224332,((A*256)+B)/400,0,5,V,7E4
+?Unknown BECM Cell V 4333,Unk V 4333,224333,((A*256)+B)/400,0,5,V,7E4
+?Unknown Cell Voltage,Unk V 44B9,2244B9,((A*256)+B)/8000,0,4.2,V,7E7
+?Unknown BECM 4394,Unk B 4394,224394,((A*256)+B),0,65535,?,7E4
+?Unknown BECM 439C,Unk B 439C,22439C,A,0,255,?,7E4
+?Unknown BECM 43AA,Unk B 43AA,2243AA,((A<8)+B)/10,0,65535,kWh,7E4
+?Unknown BECM 43C0,Unk B 43C0,2243C0,A,0,255,?,7E4
+,,,,,,,
+?Unknown Trans 194F,Unk T 194F,22194F,A,0,255,?,7E1
+?Unknown Trans 197E,Unk T 197E,22197E,A,0,255,?,7E1
+?Unknown Trans 1B00,Unk T 1B00,221B00,A,0,255,?,7E3
+?Unknown Trans 1B01,Unk T 1B01,221B01,A,0,255,?,7E3
+?Unknown Trans 1B03,Unk T 1B03,221B03,A,0,255,?,7E3
+?Unknown Trans 1B08,Unk T 1B08,221B08,A,0,255,?,7E3
+?Unknown Trans 35B2,Unk T 35B2,2235B2,A,0,255,?,7E3
+?Unknown Trans 35EA,Unk T 35EA,2235EA,((A*256)+B),0,65535,?,7E3
